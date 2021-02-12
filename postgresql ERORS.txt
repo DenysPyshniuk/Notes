@@ -1,0 +1,31 @@
+If =>   Text of Error: Skipping acquire of configured file 'main/binary-i386/Packages'
+as repository 'http://apt.postgresql.org/pub/repos/apt focal-pgdg InRelease'
+doesn't support architecture 'i386'
+
+Do =>
+
+sudo -H gedit /etc/apt/sources.list.d/pgdg.list
+Find the line:
+
+*deb http://apt.postgresql.org/pub/repos/apt focal-pgdg main*
+And change it to:
+
+deb [arch=amd64] http://apt.postgresql.org/pub/repos/apt focal-pgdg main
+SAVE file and RUN
+
+sudo apt-get update
+
+
+
+
+If  =>  doesn't login in to the psql 
+
+Do =>
+
+Run!
+sudo su - postgres
+initdb --locale en_US.UTF-8 -D /var/lib/postgres/data
+exit
+sudo systemctl start postgresql
+sudo systemctl status postgresql
+
